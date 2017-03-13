@@ -86,34 +86,31 @@ public class Test {
 		System.out.println("Pulse [Intro] para continuar");
 		entrada.nextLine();
 	}
-
+	
 	public static void copiarPila(Pila pila, Pila pilaCopia) {
 		Pila pilaAux = new Pila();
 		Nodo aux;
 		Scanner entrada = new Scanner(System.in);
+		
 		try {
-			aux = pila.obtener();
-			
+			aux = pila.obtener();			
 			while (aux != null) {
-				pilaAux.insertar(new Nodo(aux.getDato()));
-				System.out.printf("Se obitene %s y se inserta en pilaAux%n",aux.toString());
+				pilaAux.insertar(new Nodo(aux));				
 				aux = pila.obtener();
 			}
-			System.out.println(pilaAux.toString());
-			System.out.println("Pulse [Intro] para continuar");
-			entrada.nextLine();
 			
+		} catch (Exception e) {}
+			
+		try{	
 			aux = pilaAux.obtener();
 			while (aux != null) {
-				pila.insertar(new Nodo(aux.getDato()));
-				pilaCopia.insertar(new Nodo(aux.getDato()));
-				System.out.printf("Se obitene %s y se inserta en pila y pilaCopia",aux.toString());
+				pila.insertar(new Nodo(aux));
+				pilaCopia.insertar(new Nodo(aux));
 				aux = pilaAux.obtener();
 			}
 	
-		} catch (Exception e) {
-			System.err.println("Exception: " + e);
-		}
+		}catch (Exception e) {} 
+		
 		System.out.println("Pulse [Intro] para continuar");
 		entrada.nextLine();
 		
@@ -128,16 +125,16 @@ public class Test {
 	}
 
 	public static void mostrarMenuPrincipal() {
-		System.out.println("--- Examen de Programacion ---");
-		System.out.println("------------------------------");
+		System.out.println("----- Examen de Programacion -----");
+		System.out.println("----------------------------------");
 		System.out.println("1- Introducir elemento de la pila");
 		System.out.println("2- Obtener elemento de la pila");
 		System.out.println("3- Copiar pila");
 		System.out.println("4- Listar pila");
 		System.out.println("5- Listar pilaCopia");
-		System.out.println("------------------------------");
+		System.out.println("----------------------------------");
 		System.out.println("0- Salir");
-		System.out.println("------------------------------");
+		System.out.println("----------------------------------");
 	}
 
 	public static void borrarPantalla() {
